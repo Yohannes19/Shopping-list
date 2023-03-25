@@ -1,8 +1,15 @@
 <div class="row">
     <div class="col-md-5">
-<app-recieps-list></app-recieps-list>
+     <app-recieps-list (recipeSecSelected)="selectedRecipe = $event"></app-recieps-list>
     </div>
-    <div class="col-md-7">
- <app-recieps-detail></app-recieps-detail>       
+    <div class="col-md-7"> 
+        <!-- <p>LETS PASS THE INFORMATION WE GOT FROM THE ABOVE TO THE RECIPE DETAIL and pass to recipe detail componenet</p> -->
+     <app-recieps-detail *ngIf="selectedRecipe"  [recipe]="selectedRecipe">
+        <ng-template #info>
+            <div>
+             Please select.
+            </div>
+          </ng-template>
+     </app-recieps-detail>       
     </div>
 </div>

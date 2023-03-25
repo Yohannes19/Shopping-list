@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,Input ,EventEmitter,Output} from '@angular/core';
+import { Recipe } from '../../reciep.model';
 
 @Component({
   selector: 'app-recieps-item',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./recieps-item.component.css']
 })
 export class ReciepsItemComponent {
+@Input() recipe:Recipe;//to get the reciepe from the outside
+@Output() reciepeSelected=new EventEmitter<void>(); //to listen this event from outside
 
+onSelected(){
+this.reciepeSelected.emit();
+}
 }
