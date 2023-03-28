@@ -1,22 +1,24 @@
-import { Component, Output,EventEmitter } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../reciep.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recieps-list',
   templateUrl: './recieps-list.component.html',
   styleUrls: ['./recieps-list.component.css']
 })
-export class ReciepsListComponent {
-  @Output() recipeSecSelected=new EventEmitter<Recipe>();// to be listened from the outside
+export class ReciepsListComponent  implements OnInit{
+     recieps: Recipe[]=[];
+constructor(private recipeService:RecipeService,private router :Router
+  ,private route:ActivatedRoute){}// we need to inject our service  from the recipe componenet and router for navigation
 
- recieps: Recipe[]=[
- new Recipe('Test reciepe','This test reciepe is very good','https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=375,341')
-,new Recipe('Another test reciepe','This test reciepe is very good','https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=375,341')];
-;
-onSelectedRecipe(recipe:Recipe){
 
-    this.recipeSecSelected.emit(recipe); // emiiting the event for the seconf time
+ngOnInit(){
+  this.recieps=this.recipeService.getRecipe();
 }
-
+onNewRecipe(){
+this.router.navigate(['new'],{relativeTo:this.route});
+}
 
 }

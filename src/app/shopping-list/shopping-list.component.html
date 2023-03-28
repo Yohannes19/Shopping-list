@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-xs-10">
-        <app-shopping-edit (ingriedentAdd)="onIngridentAdd( $event)"></app-shopping-edit>
+        <app-shopping-edit></app-shopping-edit>
         <hr>
        <ul class="lisst-group">
         <a  class="list-group-item" style="cursor:pointer"
         *ngFor="let ingr of ingriedents"
         >
-        {{ingr.name}}{{ingr.amount}}
+        {{ingr.name}} ({{ingr.amount}})
     </a>
        </ul>
     </div>

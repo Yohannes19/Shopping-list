@@ -12,14 +12,14 @@
 
 <div class="row">
     <div class="col-xs-12">
-   <div class="btn-group">
-    <button type="button" class="btn btn-primary dropdown-toggle">Manage Reciepe <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-        <li><a href="#"> to shopping list</a></li>
-        <li><a href="#"> Edit Recipe</a></li>
-        <li><a href="#"> Delete Recipe</a></li>
-    </ul>  
-    </div>
+       <div class="btn-group" appDropdown>
+        <button type="button" class="btn btn-primary dropdown-toggle">Manage Reciepe <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a  (click)="onAddToShoppingList()" style="cursor:pointer;"> to shopping list</a></li>
+                <li><a style="cursor:pointer;" (click)="onEditRecipe()"> Edit Recipe</a></li>
+                <li><a style="cursor:pointer;"> Delete Recipe</a></li>
+            </ul>  
+        </div>
     </div>
 </div>
 <div class="row">
@@ -27,9 +27,14 @@
         {{recipe.description}}
     </div>
 </div>
-
+<hr>
+<p>Ingridents</p>
 <div class="row">
     <div class="col-xs-12">
-        Ingriendents
+       <ul class="list-group">
+         <li class="list-group-item" *ngFor="let ingridents of recipe.ingridients">
+          {{ingridents.name}}--{{ingridents.amount}}
+         </li>
+       </ul>
     </div>
 </div>
