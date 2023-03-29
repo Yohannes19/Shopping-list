@@ -4,7 +4,8 @@
         <hr>
        <ul class="lisst-group">
         <a  class="list-group-item" style="cursor:pointer"
-        *ngFor="let ingr of ingriedents"
+        *ngFor="let ingr of ingriedents ;let i=index"
+        (click)="onEditItem(i)"
         >
         {{ingr.name}} ({{ingr.amount}})
     </a>

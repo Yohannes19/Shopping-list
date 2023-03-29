@@ -15,7 +15,7 @@ constructor(private recipeService:RecipeService,private route :ActivatedRoute,
   private router :Router){} // to inject the recipe service and activated route to get the ID(current url) 
 
 ngOnInit() {
-    this.route.params.subscribe(
+    this.route.params.subscribe( //subscring the parameter to detect any changes
       (params:Params)=>{
         this.id = +params['id']
         this.recipe=this.recipeService.getReciper(this.id);
